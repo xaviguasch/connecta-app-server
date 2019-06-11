@@ -6,9 +6,12 @@ const app = express()
 // Connect Database
 connectDB()
 
-app.get('/', (req, res) => res.json({ msg: 'Welcome to the Connecta API' }))
+// Init middleware
+app.use(express.json({ extended: false }))
 
-//Define Routes
+app.get('/', (req, res) => res.json({ msg: 'Welcome to the Connecta API...' }))
+
+// Define Routes
 app.use('/api/users', require('./routes/users'))
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/contacts', require('./routes/contacts'))
